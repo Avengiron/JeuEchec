@@ -1,7 +1,8 @@
 # JeuEchec
 Jeu d'échec fait en 2018 quand j'ai appris le java
 
-Projet complet qui fait manipuler les JFrames, JPanels et JLabels (gestion de l’interface graphique), ainsi que de l'action sur réponse évènementielle d'un clic de souris. 
+Projet complet qui fait manipuler de l'héritage avec tout un système de classe, une gestion de l'interface graphique avec 
+des JFrames, JPanels et JLabels, ainsi que de l'action sur réponse évènementielle d'un clic de souris. 
 
 ### Tour de jeu
 Un tour de jeu se déroule de la manière suivante :
@@ -22,7 +23,18 @@ Un tour de jeu se déroule de la manière suivante :
 - On change le joueur qui doit jouer
 
 Une sous-fenêtre est créée pour que le joueur choisisse sa pièce en cas de promotion. Idem en cas de fin de partie.
+### Organisation des classes
+Le schéma ci-dessous montre l'organisation des classes. Une classe abstraite Piece gère toutes les informations communes à toutes
+les pièces (son type, sa couleur et son image). Des informations complémentaires sont ajoutées sur le pion, dont on a besoin de savoir 
+sa précédente position pour le premier déplacement et la prise en passant, ainsi que pour la tour et le roi, dont on a besoin de savoir 
+s'ils ont déjà été déplacés pour gérer le roque. Chaque pièce implémente la méthode deplacementAutorise qui calcule si le déplacement est légal 
+de la cellule de départ vers la cellule d'arrivée (chaque pièce ayant sa propre marche).
+
+
+![Test](https://github.com/Avengiron/HostReadMeImages/blob/main/JeuEchec/ClassOrgaTransparent.png)
 
 ### Compte-rendu
-Chaque coup jugé légal est écrit dans un compte-rendu de partie, qui répertorie les déplacements mais également les prises, 
+Chaque coup jugé légal (ayant passé toutes les étapes du cycle décrit dans **Tour de jeu**) est écrit dans un compte-rendu de partie, qui répertorie les déplacements mais également les prises, 
 les coups spéciaux et les mises en échec.
+
+
